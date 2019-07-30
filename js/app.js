@@ -9,3 +9,4 @@ let state = {
 
 const addTodoButton = document.querySelector('.js-add-button');
 const inputField = document.querySelector(".js-input");
+const listContainer = document.querySelector(".js-list");
