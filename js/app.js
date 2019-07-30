@@ -15,8 +15,8 @@ const listContainer = document.querySelector(".js-list");
 //------Events--------------
 
 inputField.addEventListener('input', (e) => {
-    if (e.data) {
-        state.newTodo += e.data;
+    if (e.target.value) {
+        state.newTodo = e.target.value;
         console.log(state.newTodo)
     }
 })
@@ -40,6 +40,8 @@ const render = state => {
         todosToHTML += todoHTML(state.todos[i])   
     }
     listContainer.innerHTML = todosToHTML;
+    state.newTodo = '';
+    inputField.textContent = '';
 }
 
 render(state);
