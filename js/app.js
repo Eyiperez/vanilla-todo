@@ -41,7 +41,7 @@ const render = state => {
     }
     listContainer.innerHTML = todosToHTML;
     state.newTodo = '';
-    inputField.textContent = '';
+    inputField.value = '';
 }
 
 render(state);
