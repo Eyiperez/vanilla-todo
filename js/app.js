@@ -22,7 +22,7 @@ inputField.addEventListener('input', (e) => {
 })
 
 addTodoButton.addEventListener('click', e => {
-    state.todos.push(state.newTodo)
+    state.todos.unshift(state.newTodo)
     console.log(state.todos)
     render(state)
 })
