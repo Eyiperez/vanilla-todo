@@ -20,3 +20,26 @@ inputField.addEventListener('input', (e) => {
         console.log(state.newTodo)
     }
 })
+
+addTodoButton.addEventListener('click', e => {
+    state.todos.push(state.newTodo)
+    console.log(state.todos)
+    render(state)
+})
+
+const todoHTML= (todo) => {
+    return `<li class="list-group-item">${todo}</li>`
+}
+
+//------Render--------
+
+const render = state => {
+    console.log('in render', state.todos)
+    let todosToHTML = '';
+    for (let i = 0; i < state.todos.length; i++) {
+        todosToHTML += todoHTML(state.todos[i])   
+    }
+    listContainer.innerHTML = todosToHTML;
+}
+
+render(state);
