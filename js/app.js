@@ -1,10 +1,26 @@
+class Storage {
+    constructor(key) {
+        this.key = key;
+    }
+    getStorage() {
+        const data = window.localStorage.getItem(this.key);
+        if (data) {
+            return JSON.parse(data);
+        }
+        return data;
+    }
+    save(data) {
+        window.localStorage.setItem(this.key, JSON.stringify(data))
+    }
+}
+
 //--------STATE----------
 let state = {
     start: false,
     todos: [],
     newTodo: '',
 }
-
+const storage = new Storage('app-state');
 
 //-----HTML Objects---------
 
@@ -24,6 +40,7 @@ inputField.addEventListener('input', (e) => {
 addTodoButton.addEventListener('click', e => {
     state.todos.unshift(state.newTodo)
     console.log(state.todos)
+    storage.save(state)
     render(state)
 })
 
@@ -44,4 +61,10 @@ const render = state => {
     inputField.value = '';
 }
 
+const stored_state = storage.getStorage();
+if (stored_state) {
+
+    state = stored_state;
+}
+storage.save(state)
 render(state);
